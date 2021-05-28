@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Book" representedClassName="Book" syncable="YES">
+        <attribute name="contents" attributeType="String"/>
+        <attribute name="location" attributeType="String" defaultValueString="0-0"/>
+        <attribute name="modified" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uniqueID" attributeType="String"/>
+        <relationship name="chapters" toMany="YES" deletionRule="Cascade" destinationEntity="Chapter" inverseName="book" inverseEntity="Chapter"/>
+    </entity>
+    <entity name="Chapter" representedClassName="Chapter" syncable="YES">
+        <attribute name="contents" attributeType="String"/>
+        <attribute name="index" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="modified" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="chapters" inverseEntity="Book"/>
+        <relationship name="pages" toMany="YES" deletionRule="Cascade" destinationEntity="Page" inverseName="chapter" inverseEntity="Page"/>
+    </entity>
+    <entity name="Page" representedClassName="Page" syncable="YES">
+        <attribute name="contents" attributeType="String"/>
+        <attribute name="index" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="chapter" maxCount="1" deletionRule="Nullify" destinationEntity="Chapter" inverseName="pages" inverseEntity="Chapter"/>
+    </entity>
+    <elements>
+        <element name="Book" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Chapter" positionX="-54" positionY="-9" width="128" height="119"/>
+        <element name="Page" positionX="-36" positionY="9" width="128" height="74"/>
+    </elements>
+</model>
